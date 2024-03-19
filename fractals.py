@@ -67,7 +67,7 @@ def plot_newton_fractal(func, perform_shading=False):
     n_root = id_root(z1_list, root_list[func]).astype(int)
 
     if perform_shading:
-        n_root = n_root - 0.4 * np.log(counter / np.max(counter))
+        n_root = n_root - 8 * np.log(counter / np.max(counter))
 
     n_root_contour = np.transpose(np.reshape(n_root, (num_x, num_y)))
 
@@ -76,7 +76,8 @@ def plot_newton_fractal(func, perform_shading=False):
     plt.figure()
     plt.xlabel("$Re(z)$", fontsize=12)
     plt.ylabel("$Im(z)$", fontsize=12)
-    plt.imshow(n_root_contour, extent=[interval_left, interval_right, interval_down, interval_up], cmap='rainbow')
+    plt.imshow(n_root_contour, extent=[interval_left, interval_right, interval_down, interval_up], cmap='coolwarm',
+                interpolation='nearest')
     plt.axis('on')
     plt.title('Newton Fractal')
     plt.text(0.5, 1.08,
@@ -86,6 +87,7 @@ def plot_newton_fractal(func, perform_shading=False):
     plt.xlabel('Real')
     plt.ylabel('Imaginary')
     plt.savefig('newton-fractal.png', bbox_inches='tight', dpi=300)
+    plt.show()
     plt.close()
 
     print('Finished creating matshow plot at ' + str(datetime.datetime.now()))
