@@ -1,4 +1,4 @@
-# Plots for list of publications
+#List of publications
 
 This Github repo stores the code for the plots used in my list of publications.
 
